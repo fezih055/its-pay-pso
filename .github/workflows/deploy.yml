@@ -74,29 +74,33 @@ jobs:
           ssh $SSH_OPTS -i private_key.pem $REMOTE_USER@$REMOTE_HOST << 'EOF'
             set -e
             cd /var/www
-
+          
             echo "📦 Extracting build..."
             sudo rm -rf its-pay.bak
             sudo mv its-pay its-pay.bak || true
             sudo mkdir -p its-pay
             sudo unzip -o laravel_app.zip -d its-pay
-
+          
             cd its-pay
-            echo "⚙️ Installing composer dependencies..."
-            sudo composer install --no-dev --optimize-autoloader
-
-            echo "🧩 Optimizing Laravel..."
-            php artisan config:cache
-            php artisan route:cache
-            php artisan view:cache
-
-            echo "🔒 Setting permissions..."
+            echo "🔒 Fixing permissions before composer..."
             sudo chown -R www-data:www-data /var/www/its-pay
             sudo chmod -R 775 storage bootstrap/cache
-
+          
+            echo "⚙️ Installing composer dependencies..."
+            sudo -u www-data composer install --no-dev --optimize-autoloader
+          
+            echo "🧩 Optimizing Laravel..."
+            sudo -u www-data php artisan config:cache
+            sudo -u www-data php artisan route:cache
+            sudo -u www-data php artisan view:cache
+          
+            echo "🔒 Resetting final permissions..."
+            sudo chown -R www-data:www-data /var/www/its-pay
+            sudo chmod -R 775 storage bootstrap/cache
+          
             echo "🔁 Restarting services..."
             sudo systemctl restart php8.4-fpm
             sudo systemctl reload nginx
-
+          
             echo "✅ Deployment completed successfully!"
           EOF
