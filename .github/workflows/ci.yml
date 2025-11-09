@@ -33,7 +33,7 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
 
-      - name: Upload to server (SCP)
+      - name: Upload to server (SCP with archive)
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           REMOTE_HOST: ${{ secrets.SERVER_IP }}
@@ -41,4 +41,18 @@ jobs:
         run: |
           echo "$SSH_PRIVATE_KEY" > private_key.pem
           chmod 600 private_key.pem
+
+          # Ensure archive folder exists on remote server
+          ssh -i private_key.pem $REMOTE_USER@$REMOTE_HOST "mkdir -p /var/www/archive"
+
+          # If existing laravel_app.zip exists, move it to archive with timestamp
+          ssh -i private_key.pem $REMOTE_USER@$REMOTE_HOST "\
+            if [ -f /var/www/laravel_app.zip ]; then \
+              mv /var/www/laravel_app.zip /var/www/archive/laravel_app_$(date +'%Y%m%d_%H%M%S').zip; \
+            fi"
+
+          # Upload the new zip artifact
           scp -i private_key.pem laravel_app.zip $REMOTE_USER@$REMOTE_HOST:/var/www/
+
+          # Optional: cleanup archives older than 7 days
+          ssh -i private_key.pem $REMOTE_USER@$REMOTE_HOST "find /var/www/archive -type f -mtime +7 -delete"
