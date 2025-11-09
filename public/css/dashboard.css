@@ -1,0 +1,448 @@
+/* Dashboard Page Specific Styles */
+
+.dashboard-page {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #4f46e5;
+    margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+    font-size: 1.125rem;
+    color: #64748b;
+    font-weight: 400;
+}
+
+/* Financial Stats Grid */
+.financial-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.financial-stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.financial-stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+}
+
+.financial-stat-card.blue::before {
+    background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+}
+
+.financial-stat-card.green::before {
+    background: linear-gradient(90deg, #10b981, #059669);
+}
+
+.financial-stat-card.purple::before {
+    background: linear-gradient(90deg, #8b5cf6, #7c3aed);
+}
+
+.financial-stat-card.orange::before {
+    background: linear-gradient(90deg, #f59e0b, #d97706);
+}
+
+.financial-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.stat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.stat-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-icon {
+    font-size: 1.25rem;
+    color: #94a3b8;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.stat-change {
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.stat-change.positive {
+    color: #059669;
+}
+
+.stat-change.negative {
+    color: #dc2626;
+}
+
+.stat-subtitle {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+}
+
+.stat-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.investment-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+}
+
+.investment-item span:first-child {
+    color: #64748b;
+}
+
+.investment-item .positive {
+    color: #059669;
+    font-weight: 600;
+}
+
+.progress-bar-small {
+    width: 100%;
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 0.5rem;
+}
+
+.progress-fill-small {
+    height: 100%;
+    background: linear-gradient(90deg, #f59e0b, #d97706);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+/* Analytics Section */
+.analytics-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.analytics-card {
+    background: white;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.analytics-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    padding: 1.5rem 1.5rem 1rem;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.card-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.card-title i {
+    font-size: 1.25rem;
+    color: #4f46e5;
+}
+
+.card-title h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+/* Monthly Spending Analysis */
+.spending-analysis {
+    padding: 1rem 1.5rem 1.5rem;
+}
+
+.spending-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.spending-item:last-child {
+    margin-bottom: 0;
+}
+
+.spending-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 140px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.category-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.category-indicator.red {
+    background: #ef4444;
+}
+
+.category-indicator.gray {
+    background: #6b7280;
+}
+
+.category-indicator.purple {
+    background: #8b5cf6;
+}
+
+.category-indicator.dark {
+    background: #374151;
+}
+
+.category-indicator.yellow {
+    background: #f59e0b;
+}
+
+.spending-bar {
+    flex: 1;
+    height: 8px;
+    background: #f1f5f9;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.spending-progress {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.spending-progress.red {
+    background: #ef4444;
+}
+
+.spending-progress.gray {
+    background: #6b7280;
+}
+
+.spending-progress.purple {
+    background: #8b5cf6;
+}
+
+.spending-progress.dark {
+    background: #374151;
+}
+
+.spending-progress.yellow {
+    background: #f59e0b;
+}
+
+/* Smart Financial Insights */
+.insights-container {
+    padding: 1rem 1.5rem 1.5rem;
+}
+
+.insight-item {
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    border-left: 4px solid;
+}
+
+.insight-item:last-child {
+    margin-bottom: 0;
+}
+
+.insight-item.saving-streak {
+    background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+    border-left-color: #10b981;
+}
+
+.insight-item.investment-opportunity {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    border-left-color: #f59e0b;
+}
+
+.insight-item.goal-reminder {
+    background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+    border-left-color: #3b82f6;
+}
+
+.insight-item h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.insight-item p {
+    font-size: 0.875rem;
+    color: #4b5563;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Responsive Design for Dashboard */
+@media (max-width: 1024px) {
+    .financial-stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    
+    .analytics-section {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-page {
+        padding: 1rem;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .financial-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .financial-stat-card {
+        padding: 1rem;
+    }
+    
+    .stat-value {
+        font-size: 1.5rem;
+    }
+    
+    .spending-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .spending-label {
+        min-width: auto;
+    }
+    
+    .spending-bar {
+        width: 100%;
+    }
+    
+    .insight-item {
+        padding: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stat-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .stat-icon {
+        align-self: flex-end;
+    }
+    
+    .investment-item {
+        font-size: 0.75rem;
+    }
+    
+    .insight-item h4 {
+        font-size: 0.875rem;
+    }
+    
+    .insight-item p {
+        font-size: 0.75rem;
+    }
+}
+
+/* Animation for progress bars */
+@keyframes progressAnimation {
+    from {
+        width: 0;
+    }
+}
+
+.spending-progress {
+    animation: progressAnimation 1s ease-out;
+}
+
+.progress-fill-small {
+    animation: progressAnimation 1s ease-out;
+}
+
+/* Focus states for accessibility */
+.financial-stat-card:focus-within {
+    outline: 2px solid #4f46e5;
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .financial-stat-card,
+    .analytics-card {
+        border-width: 2px;
+    }
+    
+    .spending-bar {
+        border: 1px solid #000;
+    }
+    
+    .insight-item {
+        border-left-width: 6px;
+    }
+}

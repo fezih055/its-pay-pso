@@ -1,0 +1,417 @@
+/* AI Advisor Page Specific Styles */
+
+.ai-advisor-page {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #4f46e5;
+    margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+    font-size: 1.125rem;
+    color: #64748b;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* AI Insights Grid */
+.ai-insights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.insight-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.insight-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.insight-card.achievement::before {
+    background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+}
+
+.insight-card.warning::before {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+}
+
+.insight-card.suggestion::before {
+    background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+}
+
+.insight-card.target::before {
+    background: linear-gradient(135deg, #fecaca, #fca5a5);
+}
+
+.insight-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.insight-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    position: relative;
+    z-index: 1;
+}
+
+.insight-header h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.insight-header i {
+    font-size: 1.25rem;
+}
+
+.insight-card.achievement .insight-header i {
+    color: #10b981;
+}
+
+.insight-card.warning .insight-header i {
+    color: #f59e0b;
+}
+
+.insight-card.suggestion .insight-header i {
+    color: #3b82f6;
+}
+
+.insight-card.target .insight-header i {
+    color: #ef4444;
+}
+
+.insight-card p {
+    font-size: 0.875rem;
+    color: #4b5563;
+    line-height: 1.5;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* AI Tools Section */
+.ai-tools-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.ai-tool-card {
+    background: white;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ai-tool-card.quick-help {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: white;
+}
+
+.ai-tool-card.forecast {
+    background: linear-gradient(135deg, #8b5cf6, #a855f7);
+    color: white;
+}
+
+.ai-tool-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.tool-header {
+    text-align: center;
+}
+
+.tool-header i {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+.tool-header h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* FAQ Section */
+.faq-section {
+    margin-bottom: 3rem;
+}
+
+.faq-item {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.faq-question {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.question-number {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #4f46e5;
+    min-width: 30px;
+}
+
+.question-text {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #1e293b;
+}
+
+.faq-answer {
+    padding: 1.5rem;
+    background: white;
+}
+
+.faq-answer p {
+    font-size: 0.875rem;
+    color: #4b5563;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Financial Forecast */
+.forecast-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.forecast-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.forecast-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.forecast-card h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+.forecast-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.forecast-label,
+.forecast-value {
+    font-size: 0.875rem;
+    color: #4b5563;
+}
+
+.forecast-value {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.forecast-change {
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    align-self: flex-start;
+}
+
+.forecast-change.positive {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.forecast-change.negative {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* Responsive Design for AI Advisor */
+@media (max-width: 1024px) {
+    .ai-insights-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    
+    .ai-tools-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .forecast-section {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .ai-advisor-page {
+        padding: 1rem;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .ai-insights-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .insight-card {
+        padding: 1rem;
+    }
+    
+    .ai-tool-card {
+        min-height: 100px;
+    }
+    
+    .tool-header i {
+        font-size: 1.5rem;
+    }
+    
+    .tool-header h3 {
+        font-size: 1rem;
+    }
+    
+    .faq-question {
+        padding: 1rem;
+    }
+    
+    .faq-answer {
+        padding: 1rem;
+    }
+    
+    .forecast-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .forecast-card {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .insight-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .insight-header i {
+        align-self: flex-end;
+    }
+    
+    .faq-question {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .forecast-item {
+        gap: 0.25rem;
+    }
+}
+
+/* Interactive States */
+.ai-tool-card:active {
+    transform: translateY(-2px);
+}
+
+.faq-question:hover {
+    background: #f1f5f9;
+}
+
+/* Loading Animation for AI Cards */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.insight-card.loading {
+    animation: pulse 2s infinite;
+}
+
+/* Focus states for accessibility */
+.ai-tool-card:focus,
+.faq-question:focus {
+    outline: 2px solid #4f46e5;
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .insight-card,
+    .ai-tool-card,
+    .faq-item,
+    .forecast-card {
+        border-width: 2px;
+    }
+    
+    .faq-question {
+        border-bottom-width: 2px;
+    }
+}

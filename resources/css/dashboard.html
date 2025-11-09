@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Dashboard - ITSPay</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class="logo-text">ITSPay</span>
+                    <p class="logo-subtitle">Smart Finance Platform</p>
+                </div>
+            </div>
+            
+            <div class="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <i class="fas fa-home"></i>
+                            <span>Homepage</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="goals.html" class="nav-link">
+                            <i class="fas fa-bullseye"></i>
+                            <span>Goals</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="dashboard.html" class="nav-link">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="ai-advisor.html" class="nav-link">
+                            <i class="fas fa-robot"></i>
+                            <span>AI Advisor</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="transaction.html" class="nav-link">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span>Transaction</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search for something">
+                    </div>
+                </div>
+                
+                <div class="header-actions">
+                    <div class="notification-icon">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">0</span>
+                    </div>
+                    
+                    <div class="user-profile">
+                        <div class="user-avatar">JS</div>
+                        <div class="user-info">
+                            <span class="user-name">John Student</span>
+                            <span class="user-id">502823055</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-page">
+                <div class="page-header">
+                    <h1 class="page-title">Financial Dashboard</h1>
+                    <p class="page-subtitle">Monitor your financial progress in real-time with insightful analytics.</p>
+                </div>
+
+                <!-- Financial Stats Grid -->
+                <div class="financial-stats-grid">
+                    <div class="financial-stat-card blue">
+                        <div class="stat-header">
+                            <h3 class="stat-title">Total Savings</h3>
+                            <i class="fas fa-piggy-bank stat-icon"></i>
+                        </div>
+                        <div class="stat-value">Rp 24.8M</div>
+                        <div class="stat-change positive">+18% from last month</div>
+                    </div>
+                    
+                    <div class="financial-stat-card green">
+                        <div class="stat-header">
+                            <h3 class="stat-title">Goals Achieved</h3>
+                            <i class="fas fa-trophy stat-icon"></i>
+                        </div>
+                        <div class="stat-value">7</div>
+                        <div class="stat-subtitle">Targets reached</div>
+                    </div>
+                    
+                    <div class="financial-stat-card purple">
+                        <div class="stat-header">
+                            <h3 class="stat-title">Investment ROI</h3>
+                            <i class="fas fa-chart-line stat-icon"></i>
+                        </div>
+                        <div class="stat-details">
+                            <div class="investment-item">
+                                <span>Mutual fund:</span>
+                                <span class="positive">+12.5%</span>
+                            </div>
+                            <div class="investment-item">
+                                <span>Deposita:</span>
+                                <span class="positive">+6.8%</span>
+                            </div>
+                            <div class="investment-item">
+                                <span>Crypto:</span>
+                                <span class="positive">+23.3%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="financial-stat-card orange">
+                        <div class="stat-header">
+                            <h3 class="stat-title">Monthly Savings</h3>
+                            <i class="fas fa-calendar stat-icon"></i>
+                        </div>
+                        <div class="stat-value">Rp 2.8M</div>
+                        <div class="stat-subtitle">Target: 3M</div>
+                        <div class="progress-bar-small">
+                            <div class="progress-fill-small" style="width: 93%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analytics Section -->
+                <div class="analytics-section">
+                    <!-- Monthly Spending Analysis -->
+                    <div class="analytics-card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <i class="fas fa-chart-bar"></i>
+                                <h3>Monthly Spending Analysis</h3>
+                            </div>
+                        </div>
+                        <div class="spending-analysis">
+                            <div class="spending-item">
+                                <div class="spending-label">
+                                    <span class="category-indicator red"></span>
+                                    <span>Foods & Drinks</span>
+                                </div>
+                                <div class="spending-bar">
+                                    <div class="spending-progress red" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="spending-item">
+                                <div class="spending-label">
+                                    <span class="category-indicator gray"></span>
+                                    <span>Transportation</span>
+                                </div>
+                                <div class="spending-bar">
+                                    <div class="spending-progress gray" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="spending-item">
+                                <div class="spending-label">
+                                    <span class="category-indicator purple"></span>
+                                    <span>Education</span>
+                                </div>
+                                <div class="spending-bar">
+                                    <div class="spending-progress purple" style="width: 25%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="spending-item">
+                                <div class="spending-label">
+                                    <span class="category-indicator dark"></span>
+                                    <span>Entertainment</span>
+                                </div>
+                                <div class="spending-bar">
+                                    <div class="spending-progress dark" style="width: 15%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="spending-item">
+                                <div class="spending-label">
+                                    <span class="category-indicator yellow"></span>
+                                    <span>Investment</span>
+                                </div>
+                                <div class="spending-bar">
+                                    <div class="spending-progress yellow" style="width: 40%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Smart Financial Insights -->
+                    <div class="analytics-card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <i class="fas fa-lightbulb"></i>
+                                <h3>Smart Financial Insights</h3>
+                            </div>
+                        </div>
+                        <div class="insights-container">
+                            <div class="insight-item saving-streak">
+                                <h4>Saving Streak</h4>
+                                <p>Amazing! You've saved consistently for 23 days straight. Keep it up!</p>
+                            </div>
+                            
+                            <div class="insight-item investment-opportunity">
+                                <h4>Investment Opportunity</h4>
+                                <p>Consider allocating 20% of your coffee budget to crypto investments for higher returns.</p>
+                            </div>
+                            
+                            <div class="insight-item goal-reminder">
+                                <h4>Goal Reminder</h4>
+                                <p>Your "Laptop Gaming" goal is 85% complete! Only Rp 2.25M left to achieve it.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="pagination-btn prev">
+                        <i class="fas fa-chevron-left"></i>
+                        Previous
+                    </button>
+                    
+                    <div class="pagination-numbers">
+                        <button class="pagination-number">1</button>
+                        <button class="pagination-number">2</button>
+                        <button class="pagination-number active">3</button>
+                        <button class="pagination-number">4</button>
+                    </div>
+                    
+                    <button class="pagination-btn next">
+                        Next
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITSPay - Smart Finance Platform</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class="logo-text">ITSPay</span>
+                    <p class="logo-subtitle">Smart Finance Platform</p>
+                </div>
+            </div>
+            
+            <div class="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item active">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-home"></i>
+                            <span>Homepage</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="goals.html" class="nav-link">
+                            <i class="fas fa-bullseye"></i>
+                            <span>Goals</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="dashboard.html" class="nav-link">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="ai-advisor.html" class="nav-link">
+                            <i class="fas fa-robot"></i>
+                            <span>AI Advisor</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="transaction.html" class="nav-link">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span>Transaction</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search for something">
+                    </div>
+                </div>
+                
+                <div class="header-actions">
+                    <div class="notification-icon">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">0</span>
+                    </div>
+                    
+                    <div class="user-profile">
+                        <div class="user-avatar">JS</div>
+                        <div class="user-info">
+                            <span class="user-name">John Student</span>
+                            <span class="user-id">502823055</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard">
+                <div class="welcome-section">
+                    <h1 class="welcome-title">Welcome, ITS Students!</h1>
+                    <p class="welcome-subtitle">Smart finance for ITS students — save, plan, and reach your goals.</p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card saving-total">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-label">Saving Total</h3>
+                            <p class="stat-value">Rp 24.3M</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card active-goals">
+                        <div class="stat-icon">
+                            <i class="fas fa-target"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-label">Active Goals</h3>
+                            <p class="stat-value">3</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card achievement">
+                        <div class="stat-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-label">Achievement</h3>
+                            <p class="stat-value">85%</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card bonus">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-label">This Week's Bonus</h3>
+                            <p class="stat-value">+15%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Goal Cards -->
+                <div class="goals-grid">
+                    <div class="goal-card gaming-laptop">
+                        <div class="goal-header">
+                            <div class="goal-icon">
+                                <i class="fas fa-laptop"></i>
+                            </div>
+                            <div class="goal-info">
+                                <h3 class="goal-title">Buy gaming laptop</h3>
+                                <div class="goal-badges">
+                                    <span class="goal-type">Need</span>
+                                    <span class="goal-priority high">HIGH</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="goal-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 50%"></div>
+                            </div>
+                            <div class="goal-amount">
+                                <span class="current-amount">Rp 7.500.000</span>
+                                <span class="target-amount">From Rp 15.000.000</span>
+                            </div>
+                        </div>
+                        
+                        <button class="see-details-btn">See Details</button>
+                    </div>
+                    
+                    <div class="goal-card bali-trip">
+                        <div class="goal-header">
+                            <div class="goal-icon">
+                                <i class="fas fa-plane"></i>
+                            </div>
+                            <div class="goal-info">
+                                <h3 class="goal-title">Bali's Trip</h3>
+                                <div class="goal-badges">
+                                    <span class="goal-type">Want</span>
+                                    <span class="goal-priority low">LOW</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="goal-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 37.5%"></div>
+                            </div>
+                            <div class="goal-amount">
+                                <span class="current-amount">Rp 3.000.000</span>
+                                <span class="target-amount">From Rp 8.000.000</span>
+                            </div>
+                        </div>
+                        
+                        <button class="see-details-btn">See Details</button>
+                    </div>
+                    
+                    <div class="goal-card emergency-fund">
+                        <div class="goal-header">
+                            <div class="goal-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="goal-info">
+                                <h3 class="goal-title">Emergency Fund</h3>
+                                <div class="goal-badges">
+                                    <span class="goal-type">Saving</span>
+                                    <span class="goal-priority medium">Medium</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="goal-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 85%"></div>
+                            </div>
+                            <div class="goal-amount">
+                                <span class="current-amount">Rp 680.000</span>
+                                <span class="target-amount">From Rp 800.000</span>
+                            </div>
+                        </div>
+                        
+                        <button class="see-details-btn">See Details</button>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="pagination-btn prev">
+                        <i class="fas fa-chevron-left"></i>
+                        Previous
+                    </button>
+                    
+                    <div class="pagination-numbers">
+                        <button class="pagination-number active">1</button>
+                        <button class="pagination-number">2</button>
+                        <button class="pagination-number">3</button>
+                        <button class="pagination-number">4</button>
+                    </div>
+                    
+                    <button class="pagination-btn next">
+                        Next
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
