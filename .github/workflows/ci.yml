@@ -1,0 +1,39 @@
+name: Laravel CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, bcmath, xml, curl
+          tools: composer
+
+      - name: Install dependencies (Composer)
+        run: composer install --no-dev --optimize-autoloader
+
+      - name: Prepare zip artifact
+        run: |
+          zip -r laravel_app.zip . -x "vendor/*" -x ".git/*" -x "tests/*"
+          ls -lh laravel_app.zip
+
+      - name: Upload to server (SCP)
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.SERVER_IP }}
+          REMOTE_USER: ${{ secrets.SERVER_USER }}
+        run: |
+          echo "$SSH_PRIVATE_KEY" > private_key.pem
+          chmod 600 private_key.pem
+          scp -i private_key.pem laravel_app.zip $REMOTE_USER@$REMOTE_HOST:/home/$REMOTE_USER/deployments/
