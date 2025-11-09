@@ -28,6 +28,11 @@ jobs:
           zip -r laravel_app.zip . -x "vendor/*" -x ".git/*" -x "tests/*"
           ls -lh laravel_app.zip
 
+      - name: Add server to known hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
+
       - name: Upload to server (SCP)
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
