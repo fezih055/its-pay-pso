@@ -48,7 +48,7 @@ jobs:
             fi"
 
           # Upload the new zip artifact
-          scp -i private_key.pem laravel_app.zip $REMOTE_USER@$REMOTE_HOST:/var/www/
+          scp -v -i private_key.pem laravel_app.zip $REMOTE_USER@$REMOTE_HOST:/var/www/
 
           # Optional: cleanup archives older than 7 days
           ssh -i private_key.pem $REMOTE_USER@$REMOTE_HOST "find /var/www/archive -type f -mtime +7 -delete"
