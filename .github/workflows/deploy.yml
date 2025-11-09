@@ -30,9 +30,12 @@ jobs:
           ls -lh laravel_app.zip
 
       - name: Add server to known hosts
+        env:
+          REMOTE_HOST: ${{ secrets.SERVER_IP }}
         run: |
           mkdir -p ~/.ssh
-          ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
+          chmod 700 ~/.ssh
+          ssh-keyscan -H $REMOTE_HOST >> ~/.ssh/known_hosts
 
       - name: Upload to server (SCP with archive)
         env:
