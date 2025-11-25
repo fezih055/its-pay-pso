@@ -1,0 +1,36 @@
+{
+    "preset": "laravel",
+    "rules": {
+        "no_blank_lines_after_class_opening": false,
+        "blank_line_before_statement": false,
+        "statement_indentation": true,
+        "indentation_type": true,
+        "no_extra_blank_lines": {
+            "tokens": [
+                "case",
+                "continue",
+                "curly_brace_block",
+                "default",
+                "extra",
+                "parenthesis_brace_block",
+                "square_brace_block",
+                "switch",
+                "throw"
+            ]
+        },
+        "single_line_comment_spacing": true,
+        "spaces_inside_parentheses": true,
+        "ternary_operator_spaces": true,
+        "trailing_comma_in_multiline": {
+            "elements": [
+                "arrays"
+            ]
+        },
+        "no_trailing_whitespace": true,
+        "final_class": false,
+        "modernize_strpos": false,
+        "no_useless_sprintf": true,
+        "single_quote": true,
+        "use_arrow_functions": false
+    }
+}

@@ -20,7 +20,7 @@ class AiAdvisorController extends Controller
 
         return view('ai-advisor', [
             'user' => $user,
-            'forecasts' => $forecasts
+            'forecasts' => $forecasts,
         ]);
     }
 }

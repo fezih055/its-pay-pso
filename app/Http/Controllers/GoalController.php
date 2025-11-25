@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class GoalController extends Controller
 {
-    //Yang asli before adding the filtering 
+    // Yang asli before adding the filtering
     // public function index()
     // {
     //     $user = Auth::user();
@@ -20,7 +20,7 @@ class GoalController extends Controller
     //     return view('goals', compact('user', 'goals'));
     // }
 
-    //The newest code for adding filtering 
+    // The newest code for adding filtering
     public function index(Request $request)
     {
         $user = Auth::user();
@@ -57,8 +57,8 @@ class GoalController extends Controller
             'priority' => $priority,
             'target_amount' => $request->input('target_amount'),
             'current_amount' => $saving,
-            'deadline' => $request->input('deadline'),  // <--- TAMBAH INI BUAT DEADLINE 
-            'created_at' => now()
+            'deadline' => $request->input('deadline'),  // <--- TAMBAH INI BUAT DEADLINE
+            'created_at' => now(),
         ]);
 
         // Catat saving sebagai transaksi
@@ -69,17 +69,15 @@ class GoalController extends Controller
                 'type' => 'income',
                 'category' => 'Saving Contribution',
                 'amount' => $saving,
-                'description' => 'Initial saving for goal: ' . $request->input('title'),
+                'description' => 'Initial saving for goal: '.$request->input('title'),
                 'transaction_date' => now(),
                 'created_at' => now(),
-                'updated_at' => now()
+                'updated_at' => now(),
             ]);
         }
 
         return redirect('/goals')->with('success', 'Goal and saving recorded.');
     }
-
-
 
     public function edit($id)
     {
@@ -94,12 +92,11 @@ class GoalController extends Controller
             'category' => $request->category,
             'priority' => $request->priority,
             'target_amount' => $request->target_amount,
-            'deadline' => $request->deadline,  // <--- TAMBAH INI BUAT DEADLINE 
+            'deadline' => $request->deadline,  // <--- TAMBAH INI BUAT DEADLINE
         ]);
 
         return redirect('/goals')->with('success', 'Goal updated successfully!');
     }
-
 
     public function destroy($id)
     {

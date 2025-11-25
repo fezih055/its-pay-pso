@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -36,7 +36,7 @@ class HomeController extends Controller
             'activeCount' => $activeCount,
             'savingTotal' => $savingTotal,
             'achievementPercent' => $achievementPercent,
-            'weeklyBonus' => $weeklyBonus
+            'weeklyBonus' => $weeklyBonus,
         ]);
     }
 }

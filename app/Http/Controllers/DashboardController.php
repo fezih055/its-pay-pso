@@ -62,7 +62,7 @@ class DashboardController extends Controller
                 'title' => 'Goal Reminder',
                 'text' => 'Your "Laptop Gaming" goal is 85% complete! Only Rp 2.25M left to achieve it.',
                 'class' => 'goal-reminder',
-            ]
+            ],
         ];
 
         return view('dashboard', [
@@ -71,7 +71,7 @@ class DashboardController extends Controller
             'goalsAchieved' => $goalsAchieved,
             'monthlySavings' => $thisMonthIncome,
             'spendingData' => $spendingData,
-            'insights' => $insights
+            'insights' => $insights,
         ]);
     }
 }

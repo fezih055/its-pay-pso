@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
@@ -74,7 +74,7 @@ class TransactionController extends Controller
             'type' => $request->type,
             'category' => $request->category,
             'amount' => $request->amount,
-            'updated_at' => now()
+            'updated_at' => now(),
         ]);
 
         return redirect('/transaction');
