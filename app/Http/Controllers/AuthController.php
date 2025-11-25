@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -19,9 +18,9 @@ class AuthController extends Controller
         $studentId = $request->input('student_id');
         $password = $request->input('password');
 
-        $user = User::where('nrp', $studentId)->first();
+        $user = User::where('nrp', $studentId)->where('password', $password)->first();
 
-        if ($user && Hash::check($password, $user->password)) {
+        if ($user) {
             Auth::login($user);
             return redirect('/home');
         }
