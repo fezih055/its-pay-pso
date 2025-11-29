@@ -29,8 +29,8 @@ class DashboardController extends Controller
         $thisMonthIncome = DB::table('transactions')
             ->where('user_id', $user->id)
             ->where('type', 'income')
-            ->whereMonth('transaction_date', now()->month)
-            ->whereYear('transaction_date', now()->year)
+            ->whereMonth('created_at', now()->month)
+            ->whereYear('created_at', now()->year)
             ->sum('amount');
 
         // Total expense per category (ALL TIME)
