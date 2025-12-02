@@ -7,28 +7,63 @@ on:
 
 jobs:
   ci:
-    name: Build and Upload Artifact
+    name: Build, Test, Sonar, Upload Artifact
     runs-on: ubuntu-latest
-
+  
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+        with:
+          # Sonar lebih akurat kalau shallow clone dimatiin
+          fetch-depth: 0
+  
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.3'
           extensions: mbstring, bcmath, xml, curl
           tools: composer
-
+          coverage: xdebug  # perlu buat PHPUnit coverage
+  
       - name: Install dependencies (Composer)
-        run: composer install --no-dev --optimize-autoloader
-
+        run: composer install --no-interaction --prefer-dist
+        # NOTE: di sini dev dependencies IKUT ke-install
+        # supaya ada vendor/bin/pint & vendor/bin/phpunit
+  
+      # --- LINT: Laravel Pint ---
+      - name: Run Laravel Pint
+        run: ./vendor/bin/pint --test
+  
+      # --- TEST: PHPUnit + coverage ---
+      - name: Run PHPUnit with coverage
+        run: |
+          php -d xdebug.mode=coverage ./vendor/bin/phpunit \
+            --coverage-clover=coverage.xml
+  
+      # --- SONAR: kirim coverage ke SonarQube Cloud / Server ---
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v4.1.0 # boleh ganti ke versi terbaru
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          # Kalau kamu pakai SonarQube *Server* (self-host), isi ini pakai URL instance-mu,
+          # kalau pakai SonarQube Cloud resmi, variable ini bisa dikosongin.
+          SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
+        with:
+          # Kalau kamu sudah punya file sonar-project.properties,
+          # cukup tambahin arg coverage seperti ini:
+          args: >
+            -Dsonar.php.coverage.reportPaths=coverage.xml
+            -Dsonar.sources=app,config,routes
+            -Dsonar.tests=tests
+  
+      # --- BUILD: zip artifact produksi ---
       - name: Prepare zip artifact
         run: |
-          zip -r laravel_app.zip . -x "vendor/*" -x ".git/*" -x "tests/*"
+          zip -r laravel_app.zip . \
+            -x "vendor/*" -x ".git/*" -x "tests/*" -x "coverage.xml"
           ls -lh laravel_app.zip
-
+  
+      # --- DEPLOY: upload ke server seperti sebelumnya ---
       - name: Upload to server (SCP with archive)
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -38,19 +73,19 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > private_key.pem
           chmod 600 private_key.pem
           export SSH_OPTS="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
-
+  
           echo "🔗 Connecting to $REMOTE_USER@$REMOTE_HOST ..."
           ssh $SSH_OPTS -i private_key.pem $REMOTE_USER@$REMOTE_HOST "mkdir -p /var/www/archive"
-
+  
           # Backup old zip if exists
           ssh $SSH_OPTS -i private_key.pem $REMOTE_USER@$REMOTE_HOST "\
             if [ -f /var/www/laravel_app.zip ]; then \
               mv /var/www/laravel_app.zip /var/www/archive/laravel_app_$(date +'%Y%m%d_%H%M%S').zip; \
             fi"
-
+  
           echo "📦 Uploading new zip..."
           scp $SSH_OPTS -v -i private_key.pem laravel_app.zip $REMOTE_USER@$REMOTE_HOST:/var/www/
-
+  
           echo "🧹 Cleaning old archives..."
           ssh $SSH_OPTS -i private_key.pem $REMOTE_USER@$REMOTE_HOST "find /var/www/archive -type f -mtime +7 -delete"
 
