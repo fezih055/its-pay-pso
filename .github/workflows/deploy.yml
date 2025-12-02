@@ -20,7 +20,7 @@ jobs:
           key: force-update-cache
   
       - name: Setup PHP
-        uses: shivammathur/setup-php@v2.31.0
+        uses: shivammathur/setup-php@v2
         with:
           php-version: '8.3'
           extensions: mbstring, bcmath, xml, curl
