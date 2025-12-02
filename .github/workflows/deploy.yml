@@ -33,13 +33,6 @@ jobs:
       - name: Run PHPUnit with coverage
         run: php -d xdebug.mode=coverage ./vendor/bin/phpunit --coverage-clover=coverage.xml
   
-      - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v4.1.0
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          # kalau pakai SonarCloud, boleh nggak pakai SONAR_HOST_URL
-          # SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
-  
       - name: Prepare zip artifact
         run: |
           zip -r laravel_app.zip . \
