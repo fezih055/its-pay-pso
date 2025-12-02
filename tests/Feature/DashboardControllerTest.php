@@ -20,7 +20,7 @@ class DashboardControllerTest extends TestCase
 
     protected function createTables(): void
     {
-        if (!Schema::hasTable('goals')) {
+        if (! Schema::hasTable('goals')) {
             Schema::create('goals', function (Blueprint $table) {
                 $table->id();
                 $table->unsignedBigInteger('user_id');
@@ -34,7 +34,7 @@ class DashboardControllerTest extends TestCase
             });
         }
 
-        if (!Schema::hasTable('transactions')) {
+        if (! Schema::hasTable('transactions')) {
             Schema::create('transactions', function (Blueprint $table) {
                 $table->id();
                 $table->unsignedBigInteger('user_id');

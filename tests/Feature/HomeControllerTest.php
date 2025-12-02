@@ -16,7 +16,7 @@ class HomeControllerTest extends TestCase
     {
         parent::setUp();
         // Create goals table for testing
-        if (!Schema::hasTable('goals')) {
+        if (! Schema::hasTable('goals')) {
             Schema::create('goals', function (Blueprint $table) {
                 $table->id();
                 $table->unsignedBigInteger('user_id');
@@ -137,7 +137,7 @@ class HomeControllerTest extends TestCase
 
         $response->assertViewHas('activeGoals');
         $activeGoals = $response->viewData('activeGoals');
-        
+
         $this->assertCount(2, $activeGoals);
         $this->assertEquals('Emergency Fund', $activeGoals[0]->title);
         $this->assertEquals('Laptop Fund', $activeGoals[1]->title);

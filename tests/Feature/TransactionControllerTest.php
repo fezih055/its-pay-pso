@@ -20,7 +20,7 @@ class TransactionControllerTest extends TestCase
 
     protected function createTables(): void
     {
-        if (!Schema::hasTable('transactions')) {
+        if (! Schema::hasTable('transactions')) {
             Schema::create('transactions', function (Blueprint $table) {
                 $table->id();
                 $table->unsignedBigInteger('user_id');

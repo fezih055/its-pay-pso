@@ -10,7 +10,7 @@ return new class extends Migration
     {
         if (Schema::hasTable('goals')) {
             Schema::table('goals', function (Blueprint $table) {
-                if (!Schema::hasColumn('goals', 'deadline')) {
+                if (! Schema::hasColumn('goals', 'deadline')) {
                     $table->date('deadline')->nullable()->after('priority');
                 }
             });

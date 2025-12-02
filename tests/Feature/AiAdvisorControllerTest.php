@@ -3,12 +3,13 @@
 namespace Tests\Feature;
 
 use App\Models\User;
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class AiAdvisorControllerTest extends TestCase
 {
     use RefreshDatabase;
+
     /**
      * Test AI Advisor page renders for authenticated user
      */
@@ -47,7 +48,7 @@ class AiAdvisorControllerTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertViewHas('forecasts');
-        
+
         $forecasts = $response->viewData('forecasts');
         $this->assertIsArray($forecasts);
         $this->assertNotEmpty($forecasts);
@@ -62,7 +63,7 @@ class AiAdvisorControllerTest extends TestCase
         $response = $this->actingAs($user)->get('/advisor');
 
         $forecasts = $response->viewData('forecasts');
-        
+
         foreach ($forecasts as $forecast) {
             $this->assertArrayHasKey('label', $forecast);
             $this->assertArrayHasKey('current', $forecast);
@@ -80,7 +81,7 @@ class AiAdvisorControllerTest extends TestCase
 
         $forecasts = $response->viewData('forecasts');
         $labels = array_column($forecasts, 'label');
-        
+
         $this->assertContains('Monthly Savings', $labels);
     }
 
@@ -94,7 +95,7 @@ class AiAdvisorControllerTest extends TestCase
 
         $forecasts = $response->viewData('forecasts');
         $labels = array_column($forecasts, 'label');
-        
+
         $this->assertContains('Food Expenses', $labels);
     }
 
@@ -108,7 +109,7 @@ class AiAdvisorControllerTest extends TestCase
 
         $forecasts = $response->viewData('forecasts');
         $labels = array_column($forecasts, 'label');
-        
+
         $this->assertContains('Transportation', $labels);
     }
 
@@ -121,7 +122,7 @@ class AiAdvisorControllerTest extends TestCase
         $response = $this->actingAs($user)->get('/advisor');
 
         $forecasts = $response->viewData('forecasts');
-        
+
         foreach ($forecasts as $forecast) {
             $this->assertIsNumeric($forecast['current']);
             $this->assertIsNumeric($forecast['forecast']);
@@ -137,7 +138,7 @@ class AiAdvisorControllerTest extends TestCase
         $response = $this->actingAs($user)->get('/advisor');
 
         $forecasts = $response->viewData('forecasts');
-        
+
         foreach ($forecasts as $forecast) {
             $this->assertGreaterThan(0, $forecast['current']);
             $this->assertGreaterThan(0, $forecast['forecast']);
@@ -265,7 +266,7 @@ class AiAdvisorControllerTest extends TestCase
         $response = $this->actingAs($user)->get('/advisor');
 
         $forecasts = $response->viewData('forecasts');
-        
+
         // Check each forecast has exactly 3 keys
         foreach ($forecasts as $forecast) {
             $this->assertCount(3, $forecast);
@@ -281,7 +282,7 @@ class AiAdvisorControllerTest extends TestCase
         $response = $this->actingAs($user)->get('/advisor');
 
         $forecasts = $response->viewData('forecasts');
-        
+
         foreach ($forecasts as $forecast) {
             $this->assertIsString($forecast['label']);
             $this->assertNotEmpty($forecast['label']);
@@ -294,7 +295,7 @@ class AiAdvisorControllerTest extends TestCase
     public function test_advisor_multiple_requests_return_consistent_data(): void
     {
         $user = User::factory()->create();
-        
+
         $response1 = $this->actingAs($user)->get('/advisor');
         $response2 = $this->actingAs($user)->get('/advisor');
 

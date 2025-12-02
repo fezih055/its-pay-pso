@@ -31,12 +31,12 @@ class TransactionController extends Controller
         $currentMonth = now()->month;
         $currentYear = now()->year;
         $daysInMonth = now()->daysInMonth;
-        
+
         $averageDaily = DB::table('transactions')
             ->where('user_id', $user->id)
             ->whereMonth('created_at', $currentMonth)
             ->whereYear('created_at', $currentYear)
-            ->selectRaw('SUM(amount)/' . $daysInMonth . ' AS avg')
+            ->selectRaw('SUM(amount)/'.$daysInMonth.' AS avg')
             ->value('avg');
 
         return view('transaction', compact(

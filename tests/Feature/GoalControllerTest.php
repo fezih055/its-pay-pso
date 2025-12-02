@@ -3,9 +3,9 @@
 namespace Tests\Feature;
 
 use App\Models\User;
-use Tests\TestCase;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Tests\TestCase;
 
 class GoalControllerTest extends TestCase
 {
