@@ -7,64 +7,68 @@ on:
 
 jobs:
   ci:
-    runs-on: ubuntu-latest
-  
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4.2.2
-  
-      - name: Force update cache (fix deprecation)
-        uses: actions/cache@v4
-        with:
-          path: /dev/null
-          key: force-update-cache
-  
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.3'
-          extensions: mbstring, bcmath, xml, curl
-          tools: composer
-          coverage: xdebug
-  
-      - name: Install dependencies (Composer)
-        run: composer install --no-interaction --prefer-dist
-  
-      - name: Run Laravel Pint
-        run: ./vendor/bin/pint --test
-  
-      - name: Run PHPUnit with coverage
-        run: php -d xdebug.mode=coverage ./vendor/bin/phpunit --coverage-clover=coverage.xml
-  
-      - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v4.1.0
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-  
-      - name: Prepare ZIP
-        run: |
-          zip -r laravel_app.zip . \
-            -x "vendor/*" -x ".git/*" -x "tests/*" -x "coverage.xml"
-  
-      - name: Upload to server (SCP)
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: ${{ secrets.SERVER_IP }}
-          REMOTE_USER: ${{ secrets.SERVER_USER }}
-        run: |
-          echo "$SSH_PRIVATE_KEY" > private_key.pem
-          chmod 600 private_key.pem
-          export SSH_OPTS="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
-  
-          ssh $SSH_OPTS -i private_key.pem $REMOTE_USER@$REMOTE_HOST "mkdir -p /var/www/archive"
-  
-          if ssh $SSH_OPTS -i private_key.pem $REMOTE_USER@$REMOTE_HOST '[ -f /var/www/laravel_app.zip ]'; then
-            ssh $SSH_OPTS -i private_key.pem $REMOTE_USER@$REMOTE_HOST "\
-              mv /var/www/laravel_app.zip /var/www/archive/laravel_app_$(date +'%Y%m%d_%H%M%S').zip"
-          fi
-  
-          scp $SSH_OPTS -i private_key.pem laravel_app.zip $REMOTE_USER@$REMOTE_HOST:/var/www/
-          ssh $SSH_OPTS -i private_key.pem $REMOTE_USER@$REMOTE_HOST "find /var/www/archive -type f -mtime +7 -delete"
+  name: Build, Test, Sonar, Upload Artifact
+  runs-on: ubuntu-latest
+
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.3'
+        extensions: mbstring, bcmath, xml, curl
+        tools: composer
+        coverage: xdebug
+
+    - name: Install dependencies (Composer)
+      run: composer install --no-interaction --prefer-dist
+
+    - name: Run Laravel Pint
+      run: ./vendor/bin/pint --test
+
+    - name: Run PHPUnit with coverage
+      run: php -d xdebug.mode=coverage ./vendor/bin/phpunit --coverage-clover=coverage.xml
+
+    - name: SonarQube Scan
+      uses: SonarSource/sonarqube-scan-action@v4.1.0
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        # kalau pakai SonarCloud, boleh nggak pakai SONAR_HOST_URL
+        # SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
+
+    - name: Prepare zip artifact
+      run: |
+        zip -r laravel_app.zip . \
+          -x "vendor/*" -x ".git/*" -x "tests/*" -x "coverage.xml"
+
+    - name: Upload to server (SCP with archive)
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        REMOTE_HOST: ${{ secrets.SERVER_IP }}
+        REMOTE_USER: ${{ secrets.SERVER_USER }}
+      run: |
+        echo "$SSH_PRIVATE_KEY" > private_key.pem
+        chmod 600 private_key.pem
+        export SSH_OPTS="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
+
+        echo "🔗 Connecting to $REMOTE_USER@$REMOTE_HOST ..."
+        ssh $SSH_OPTS -i private_key.pem $REMOTE_USER@$REMOTE_HOST "mkdir -p /var/www/archive"
+
+        if ssh $SSH_OPTS -i private_key.pem $REMOTE_USER@$REMOTE_HOST '[ -f /var/www/laravel_app.zip ]'; then
+          ssh $SSH_OPTS -i private_key.pem $REMOTE_USER@$REMOTE_HOST "\
+            mv /var/www/laravel_app.zip /var/www/archive/laravel_app_$(date +'%Y%m%d_%H%M%S').zip"
+        fi
+
+        echo "📦 Uploading new zip..."
+        scp $SSH_OPTS -i private_key.pem laravel_app.zip $REMOTE_USER@$REMOTE_HOST:/var/www/
+
+        echo "🧹 Cleaning old archives..."
+        ssh $SSH_OPTS -i private_key.pem $REMOTE_USER@$REMOTE_HOST "find /var/www/archive -type f -mtime +7 -delete"
+        +7 -delete"
 
   cd:
     name: Deploy to Production
