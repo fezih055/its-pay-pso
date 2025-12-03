@@ -14,7 +14,7 @@
 .page-title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #4f46e5;
+    color: FF5555;
     margin-bottom: 0.5rem;
 }
 
@@ -142,7 +142,7 @@
 }
 
 .ai-tool-card.quick-help {
-    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    background: linear-gradient(135deg, FF5555, #7c3aed);
     color: white;
 }
 
@@ -203,7 +203,7 @@
 .question-number {
     font-size: 1.125rem;
     font-weight: 700;
-    color: #4f46e5;
+    color: FF5555;
     min-width: 30px;
 }
 
@@ -401,7 +401,7 @@
 /* Focus states for accessibility */
 .ai-tool-card:focus,
 .faq-question:focus {
-    outline: 2px solid #4f46e5;
+    outline: 2px solid FF5555;
     outline-offset: 2px;
 }
 
