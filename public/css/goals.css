@@ -14,7 +14,7 @@
 .page-title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #73AF6F;
+    color: #BF1A1A;
     margin-bottom: 0.5rem;
 }
 
@@ -84,7 +84,7 @@
     font-size: 2rem;
     margin-bottom: 1.5rem;
     background: rgba(255, 255, 255, 0.9);
-    color: #73AF6F;
+    color: #BF1A1A;
     position: relative;
     z-index: 1;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -118,7 +118,7 @@
 }
 
 .status-badge.in-progress {
-    background: #73AF6F;
+    background: #BF1A1A;
     color: white;
 }
 
@@ -138,7 +138,7 @@
 
 .progress-fill-large {
     height: 100%;
-    background: linear-gradient(90deg, #73AF6F, #7c3aed);
+    background: linear-gradient(90deg, #BF1A1A, #7c3aed);
     border-radius: 6px;
     transition: width 0.3s ease;
     position: relative;
@@ -315,8 +315,8 @@
 }
 
 .pagination-number.active {
-    background: #73AF6F;
-    border-color: #73AF6F;
+    background: #BF1A1A;
+    border-color: #BF1A1A;
     color: white;
     box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
 }
@@ -431,7 +431,7 @@
 .btn-edit:focus,
 .btn-delete:focus,
 .btn-add-goal:focus {
-    outline: 2px solid #73AF6F;
+    outline: 2px solid #BF1A1A;
     outline-offset: 2px;
 }
 

@@ -47,7 +47,7 @@ body {
 
 .logo i {
     font-size: 2rem;
-    color: #73AF6F;
+    color: #BF1A1A;
     background: #eef2ff;
     width: 48px;
     height: 48px;
@@ -103,7 +103,7 @@ body {
 }
 
 .nav-item.active .nav-link {
-    background-color: #73AF6F;
+    background-color: #BF1A1A;
     color: white;
 }
 
@@ -164,7 +164,7 @@ body {
 
 .search-box input:focus {
     outline: none;
-    border-color: #73AF6F;
+    border-color: #BF1A1A;
     background-color: white;
     box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
@@ -262,7 +262,7 @@ body {
 .welcome-title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #73AF6F;
+    color: #BF1A1A;
     margin-bottom: 0.5rem;
 }
 
@@ -423,7 +423,7 @@ body {
     justify-content: center;
     font-size: 1.25rem;
     background: rgba(255, 255, 255, 0.8);
-    color: #73AF6F;
+    color: #BF1A1A;
 }
 
 .goal-info {
@@ -453,7 +453,7 @@ body {
 
 .goal-type {
     background: rgba(255, 255, 255, 0.8);
-    color: #73AF6F;
+    color: #BF1A1A;
 }
 
 .goal-priority.high {
@@ -486,7 +486,7 @@ body {
 
 .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, #73AF6F, #7c3aed);
+    background: linear-gradient(90deg, #BF1A1A, #7c3aed);
     border-radius: 4px;
     transition: width 0.3s ease;
 }
@@ -515,7 +515,7 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 12px;
     font-weight: 600;
-    color: #73AF6F;
+    color: #BF1A1A;
     cursor: pointer;
     transition: all 0.2s ease;
 }
@@ -580,8 +580,8 @@ body {
 }
 
 .pagination-number.active {
-    background: #73AF6F;
-    border-color: #73AF6F;
+    background: #BF1A1A;
+    border-color: #BF1A1A;
     color: white;
 }
 
@@ -683,7 +683,7 @@ body {
 button:focus,
 input:focus,
 .nav-link:focus {
-    outline: 2px solid #73AF6F;
+    outline: 2px solid #BF1A1A;
     outline-offset: 2px;
 }
 
