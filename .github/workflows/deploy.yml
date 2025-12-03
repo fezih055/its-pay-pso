@@ -20,9 +20,8 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.3'
-          extensions: mbstring, bcmath, xml, curl, xdebug
+          extensions: mbstring, bcmath, xml, curl
           tools: composer
-          coverage: xdebug
   
       - name: Install dependencies (Composer)
         run: composer install --no-interaction --prefer-dist
@@ -30,13 +29,13 @@ jobs:
       - name: Run Laravel Pint
         run: ./vendor/bin/pint --test
   
-      - name: Run PHPUnit with coverage
-        run: php -d xdebug.mode=coverage ./vendor/bin/phpunit --coverage-clover=coverage.xml
+      - name: Run PHPUnit Tests
+        run: ./vendor/bin/phpunit
   
       - name: Prepare zip artifact
         run: |
           zip -r laravel_app.zip . \
-            -x "vendor/*" -x ".git/*" -x "tests/*" -x "coverage.xml"
+            -x "vendor/*" -x ".git/*" -x "tests/*"
   
       - name: Upload to server (SCP with archive)
         env:
