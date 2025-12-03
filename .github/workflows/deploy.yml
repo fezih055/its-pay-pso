@@ -66,7 +66,6 @@ jobs:
   
           echo "🧹 Cleaning old archives..."
           ssh $SSH_OPTS -i private_key.pem $REMOTE_USER@$REMOTE_HOST "find /var/www/archive -type f -mtime +7 -delete"
-          +7 -delete"
 
   cd:
     name: Deploy to Production
