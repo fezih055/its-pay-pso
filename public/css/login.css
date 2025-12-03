@@ -14,7 +14,7 @@ body {
 
 .login-container {
     min-height: 100vh;
-    background: linear-gradient(135deg, #F29AAE 0%, #7c3aed 50%, #3b82f6 100%);
+    background: linear-gradient(135deg, #73AF6F 0%, #7c3aed 50%, #3b82f6 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -177,7 +177,7 @@ body {
 
 .input-container input:focus {
     outline: none;
-    border-color: #F29AAE;
+    border-color: #73AF6F;
     box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
 
@@ -202,11 +202,11 @@ body {
 }
 
 .password-toggle:hover {
-    color: #F29AAE;
+    color: #73AF6F;
 }
 
 .password-toggle:focus {
-    outline: 2px solid #F29AAE;
+    outline: 2px solid #73AF6F;
     outline-offset: 2px;
 }
 
@@ -248,7 +248,7 @@ body {
 }
 
 .forgot-link {
-    color: #F29AAE;
+    color: #73AF6F;
     text-decoration: none;
     font-size: 0.875rem;
     font-weight: 500;

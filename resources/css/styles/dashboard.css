@@ -14,7 +14,7 @@
 .page-title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #F29AAE;
+    color: #73AF6F;
     margin-bottom: 0.5rem;
 }
 
@@ -193,7 +193,7 @@
 
 .card-title i {
     font-size: 1.25rem;
-    color: #F29AAE;
+    color: #73AF6F;
 }
 
 .card-title h3 {
@@ -427,7 +427,7 @@
 
 /* Focus states for accessibility */
 .financial-stat-card:focus-within {
-    outline: 2px solid #F29AAE;
+    outline: 2px solid #73AF6F;
     outline-offset: 2px;
 }
 

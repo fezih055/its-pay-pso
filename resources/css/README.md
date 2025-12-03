@@ -35,7 +35,7 @@ slicing/
 - **Pagination**: Navigation for multiple pages of content
 
 ### Color Scheme:
-- Primary: `#F29AAE` (Indigo)
+- Primary: `#73AF6F` (Indigo)
 - Background: `#f8fafc` (Slate 50)
 - Cards: White with gradient accents
 - Text: `#1e293b` (Slate 800) and `#64748b` (Slate 500)

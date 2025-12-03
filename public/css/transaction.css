@@ -14,7 +14,7 @@
 .page-title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #F29AAE;
+    color: #73AF6F;
     margin-bottom: 0.5rem;
 }
 
@@ -393,7 +393,7 @@
 /* Focus states for accessibility */
 .transaction-item:focus,
 .btn-add-transaction:focus {
-    outline: 2px solid #F29AAE;
+    outline: 2px solid #73AF6F;
     outline-offset: 2px;
 }
 
