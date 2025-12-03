@@ -87,42 +87,42 @@ jobs:
           ssh $SSH_OPTS -i private_key.pem $REMOTE_USER@$REMOTE_HOST << 'EOF'
             set -e
             cd /var/www
-            
+          
             echo "📦 Extracting build..."
             sudo rm -rf its-pay.bak
             sudo mv its-pay its-pay.bak || true
             sudo mkdir -p its-pay
             sudo unzip -o laravel_app.zip -d its-pay
-  
+          
             echo "📄 Copying .env from /var/www to project..."
             sudo cp /var/www/.env /var/www/its-pay/.env
-  
+          
+            echo "🔒 Set project ownership so composer/vendor can be created..."
+            # INI YANG PENTING → biar www-data boleh bikin vendor/
+            sudo chown -R www-data:www-data /var/www/its-pay
+          
             cd its-pay
-  
-            echo "🔒 Fixing permissions for storage, cache, and .env..."
-            sudo chown -R www-data:www-data /var/www/its-pay/storage /var/www/its-pay/bootstrap/cache /var/www/its-pay/.env
-            sudo find /var/www/its-pay/storage -type d -exec chmod 775 {} \;
-            sudo find /var/www/its-pay/storage -type f -exec chmod 664 {} \;
-            sudo find /var/www/its-pay/bootstrap/cache -type d -exec chmod 775 {} \;
-            sudo find /var/www/its-pay/bootstrap/cache -type f -exec chmod 664 {} \;
-            sudo chmod 664 /var/www/its-pay/.env
-  
+          
+            echo "🔧 Fixing permissions for storage, cache, and .env..."
+            sudo find storage -type d -exec chmod 775 {} \;
+            sudo find storage -type f -exec chmod 664 {} \;
+            sudo find bootstrap/cache -type d -exec chmod 775 {} \;
+            sudo find bootstrap/cache -type f -exec chmod 664 {} \;
+            sudo chmod 664 .env
+          
             echo "⚙️ Installing composer dependencies..."
             sudo -u www-data composer install --no-dev --optimize-autoloader
-  
+          
             echo "🧩 Optimizing Laravel (config / route / view cache)..."
             sudo -u www-data php artisan config:clear
             sudo -u www-data php artisan cache:clear
             sudo -u www-data php artisan config:cache
             sudo -u www-data php artisan route:cache
             sudo -u www-data php artisan view:cache
-  
-            echo "🔒 Resetting final permissions on project..."
-            sudo chown -R www-data:www-data /var/www/its-pay
-  
+          
             echo "🔁 Restarting services..."
             sudo systemctl restart php8.4-fpm
             sudo systemctl reload nginx
-  
+          
             echo "✅ Deployment completed successfully!"
           EOF
